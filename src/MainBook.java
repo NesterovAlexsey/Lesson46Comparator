@@ -4,6 +4,10 @@
 //Создайте компаратор, который позволит сортировать книги по названию,
 // при одинаковых названиях - по автору (и там, и там - по алфавиту)
 
+//# Задача 2* (не обязательно)
+//Создайте компаратор, который позволит сортировать книги по убыванию количества страниц,
+// а при совпадающем объёме - по названиям ("по возрастанию", по алфавиту).
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,19 +15,23 @@ import java.util.List;
 public class MainBook {
   public static void main(String[] args) {
 
-    List<Book> myBestBook = new ArrayList<>();
-    myBestBook.add(new Book("Remark", "Three friends", 200));
-    myBestBook.add(new Book("Stephen Covey", "7 Effective skills", 300));
-    myBestBook.add(new Book("Достоевский", "Братья Карамазовы", 680));
-    myBestBook.add(new Book("Remark", "No change on the western front", 300));
+    List<Book> myBestBooks = new ArrayList<>();
+    myBestBooks.add(new Book("Remark", "Three friends", 200));
+    myBestBooks.add(new Book("Stephen Covey", "7 Effective skills", 300));
+    myBestBooks.add(new Book("Достоевский", "Братья Карамазовы", 680));
+    myBestBooks.add(new Book("Remark", "No change on the western front", 300));
 
     System.out.println("Sort by Author(in alphabet):");
-    Collections.sort(myBestBook);
-    showBookList(myBestBook);
+    Collections.sort(myBestBooks);
+    showBookList(myBestBooks);
 
     System.out.println("Sort by Book name(in alphabet):");
-    myBestBook.sort(new NameBookComparator());
-    showBookList(myBestBook);
+    myBestBooks.sort(new NameBookComparator());
+    showBookList(myBestBooks);
+
+    System.out.println("Sort by numbers of pages:");
+    myBestBooks.sort(new NumberOfPagesComparator());
+    showBookList(myBestBooks);
   }
 
   private static void showBookList(List<Book> myBestBook) {
